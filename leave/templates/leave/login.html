@@ -1,0 +1,36 @@
+{% extends "leave/base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-4">
+    <div class="card shadow p-4">
+      <h3 class="text-center mb-3 text-primary">Leave Management</h3>
+      <h5 class="text-center mb-4">Sign in to your account</h5>
+
+      {% if form.errors %}
+      <div class="alert alert-danger">
+        Invalid username or password. Please try again.
+      </div>
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_username" class="form-label">Username</label>
+          {{ form.username }}
+        </div>
+        <div class="mb-3">
+          <label for="id_password" class="form-label">Password</label>
+          {{ form.password }}
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+
+      <div class="text-center mt-3">
+        <small class="text-muted">
+          Don’t have an account? Please contact the administrator.
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
